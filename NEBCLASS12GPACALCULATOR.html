@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEB GPA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #252222ea;
+            color: #f8f9fa;
+        }
+
+        .dark-mode label,
+        .dark-mode select,
+        .dark-mode span {
+            color: white;
+
+        }
+
+        #header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode form {
+            background-color: #252222ea;
+        }
+
+        .dark-mode select {
+            background-color: #333;
+        }
+
+        select {
+            background-color: #fff;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            transition: border-color 0.3s;
+        }
+
+
+        select:hover {
+            border-color: #999;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        select {
+            width: 150px;
+            margin-right: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: #000000;
+            color: #fff;
+            cursor: pointer;
+
+        }
+
+        #output {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #button1 {
+            display: block;
+            margin: auto;
+            border-radius: 5px;
+            background-color: rgb(46, 42, 42);
+            color: rgb(255, 255, 255);
+            border: 2px solid black;
+
+        }
+    </style>
+
+    <script>
+        function calculateGrade(gradeTh, creditTh, gradePr, creditPr) {
+            return ((gradeTh * creditTh) + (gradePr * creditPr));
+        }
+
+        function result() {
+            var result1 = calculateGrade(getGradeValue(document.getElementById('Physics').value),
+                3.75, getGradeValue(document.getElementById('PhysicsP').value), 1.25);
+            var result2 = calculateGrade(getGradeValue(document.getElementById('Chemistry').value),
+                3.75, getGradeValue(document.getElementById('ChemistryP').value), 1.25);
+            var result3 = calculateGrade(getGradeValue(document.getElementById('Maths').value),
+                3.75, getGradeValue(document.getElementById('MathsP').value), 1.25);
+            var result4 = calculateGrade(getGradeValue(document.getElementById('English').value),
+                3, getGradeValue(document.getElementById('EnglishP').value), 1);
+            var result5 = calculateGrade(getGradeValue(document.getElementById('Nepali').value),
+                2.25, getGradeValue(document.getElementById('NepaliP').value), 0.75);
+            var result6 = calculateGrade(getGradeValue(document.getElementById('Computer').value),
+                2.25, getGradeValue(document.getElementById('ComputerP').value), 2.25);
+            var result7 = calculateGrade(getGradeValue(document.getElementById('Biology').value),
+                3.75, getGradeValue(document.getElementById('BiologyP').value), 1.25);
+
+            var totalCreditHours = 3.75 + 1.25 + 3.75 + 1.25 + 3.0 + 1.0 + 2.25 + 0.75 + 2.25 + 2.25 + 3.75 + 1.25;
+            var totalResult = (result1 + result2 + result3 + result4 + result5 + result6 + result7) / totalCreditHours;
+            if(result7!=0)
+            {
+                totalResult = totalResult-0.075;
+                document.getElementById("output").innerHTML = "Your result is " + totalResult.toFixed(2);
+            }
+            else{
+                document.getElementById("output").innerHTML = "Your result is " + totalResult.toFixed(2);
+            }
+            
+        }
+
+        function getGradeValue(grade) {
+            switch (grade) {
+                case 'A+':
+                    return 4;
+                case 'A':
+                    return 3.6;
+                case 'B+':
+                    return 3.2;
+                case 'B':
+                    return 2.8;
+                case 'C+':
+                    return 2.4;
+                case 'C':
+                    return 2;
+                case 'D+':
+                    return 1.6;
+                case 'D':
+                    return 1.2;
+                case 'NO':
+                    return 0;
+                default:
+                    return 0;
+            }
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <h1>NEB GPA CALCULATOR</h1>
+    </div>
+
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+
+    <form name="form1" id="light1">
+        <div style="text-align: center; margin-bottom: 10px;">
+            <span style="font-weight: bold;">Theory</span>
+            <span style="margin-left: 250px; font-weight: bold;">Practical</span>
+        </div>
+        <div id="changeindarkmode">
+            <label for="Physics">Physics:</label>
+            <select name="Physics" id="Physics">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <label for="PhysicsP"></label>
+            <select name="PhysicsP" id="PhysicsP">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <br>
+            <label for="Chemistry">Chemistry:</label>
+            <select name="Chemistry" id="Chemistry">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <label for="ChemistryP"></label>
+            <select name="ChemistryP" id="ChemistryP">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <br>
+
+            <label for="Maths">Maths:</label>
+            <select name="Maths" id="Maths">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <label for="MathsP"></label>
+            <select name="MathsP" id="MathsP">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <br>
+
+            <label for="English">English:</label>
+            <select name="English" id="English">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <label for="EnglishP"></label>
+            <select name="EnglishP" id="EnglishP">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <br>
+
+            <label for="Nepali">Nepali:</label>
+            <select name="Nepali" id="Nepali">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <label for="NepaliP"></label>
+            <select name="NepaliP" id="NepaliP">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+            </select>
+            <br>
+
+            <label for="Computer">Computer:</label>
+            <select name="Computer" id="Computer">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+                <option value="NO">NO</option>
+            </select>
+            <label for="ComputerP"></label>
+            <select name="ComputerP" id="ComputerP">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+                <option value="NO">NO</option>
+            </select>
+            <br>
+
+            <label for="Biology">Biology:</label>
+            <select name="Biology" id="Biology">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+                <option value="NO">NO</option>
+            </select>
+            <label for="BiologyP"></label>
+            <select name="BiologyP" id="BiologyP">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+                <option value="NO">NO</option>
+            </select>
+            <br>
+        </div>
+
+        <button type="button" id="button1" onclick="result()">Check</button>
+    </form>
+
+    <div id="output"></div>
+
+    <div id="footer">
+        <h2>Made by Aayush with HTML and JS</h2>
+    </div>
+</body>
+
+</html>
