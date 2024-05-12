@@ -1,0 +1,119 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #252222ea;
+            color: #f8f9fa;
+        }
+
+        .dark-mode label,
+        .dark-mode select,
+        .dark-mode span {
+            color: white;
+
+        }
+
+        #header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode form {
+            background-color: #252222ea;
+        }
+
+        .dark-mode select {
+            background-color: #333;
+        }
+
+        select {
+            background-color: #fff;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            transition: border-color 0.3s;
+        }
+
+
+        select:hover {
+            border-color: #999;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        select {
+            width: 150px;
+            margin-right: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: #000000;
+            color: #fff;
+            cursor: pointer;
+
+        }
+
+        #output {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #button1 {
+            display: block;
+            margin: auto;
+            border-radius: 5px;
+            background-color: rgb(46, 42, 42);
+            color: rgb(255, 255, 255);
+            border: 2px solid black;
+
+        }
+   
